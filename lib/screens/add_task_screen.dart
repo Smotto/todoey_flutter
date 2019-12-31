@@ -3,9 +3,13 @@ import 'package:todoey_flutter/models/task.dart';
 import 'tasks_screen.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  final Function addTaskCallback;
+  AddTaskScreen(this.addTaskCallback);
+
   @override
   Widget build(BuildContext context) {
     String taskTitle;
+
     return Container(
       color: Color(0xFF757575),
       child: Container(
@@ -42,9 +46,8 @@ class AddTaskScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (taskTitle != null) {
-                    tasks.add(Task(name: taskTitle));
+                    addTaskCallback(taskTitle);
                   }
-                  Navigator.pop(context);
                 },
               )
             ],
@@ -60,3 +63,5 @@ class AddTaskScreen extends StatelessWidget {
     );
   }
 }
+
+
