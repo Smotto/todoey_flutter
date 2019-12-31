@@ -19,6 +19,11 @@ class TaskData extends ChangeNotifier {
     _tasks.add(task);
     notifyListeners();
   }
+  void removeTask(Task task)
+  {
+    _tasks.remove(task);
+    notifyListeners();
+  }
 
   int get taskCount {
     return _tasks.length;
