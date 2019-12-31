@@ -9,7 +9,6 @@ class TaskData extends ChangeNotifier {
 
   void populateTaskList() async {
     List<String> listOfKeys = await sharedPref.readAll();
-    print('KeyListLength: ${listOfKeys.length}');
     for (String key in listOfKeys) {
       try {
         Task task = Task.fromJson(await sharedPref.read(key));
@@ -19,6 +18,7 @@ class TaskData extends ChangeNotifier {
         print(e);
       }
     }
+    print('KeyListLength: ${listOfKeys.length}');
   }
 
   List<Task> _tasks = [];
@@ -47,6 +47,8 @@ class TaskData extends ChangeNotifier {
 
   void updateTask(Task task) {
     task.toggleDone();
+    sharedPref.remove(task.name);
+    sharedPref.save(task.name, task);
     notifyListeners();
   }
 }
