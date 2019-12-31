@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart'; // Material has this
+import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:todoey_flutter/models/task.dart';
 import 'dart:collection';

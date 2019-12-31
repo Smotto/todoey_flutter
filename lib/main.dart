@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'screens/tasks_screen.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 
+// Note: The app won't bug out when mass checking boxes since we use providers.
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
