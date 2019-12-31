@@ -5,8 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
 
-class TasksScreen extends StatelessWidget
-{
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,13 +15,7 @@ class TasksScreen extends StatelessWidget
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              builder: (context) => AddTaskScreen((taskTitle) {
-//                    setState(() {
-//                      tasks.add(Task(name: taskTitle));
-//                    });
-                    Navigator.pop(context);
-                  }));
+              context: context, builder: (context) => AddTaskScreen());
         },
       ),
       body: Column(
@@ -47,7 +40,7 @@ class TasksScreen extends StatelessWidget
                         fontSize: 50.0,
                         fontWeight: FontWeight.bold)),
                 Text(
-                  '${Provider.of<TaskData>(context).tasks.length} Tasks',
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
