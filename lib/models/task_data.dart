@@ -1,14 +1,22 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:todoey_flutter/models/task.dart';
+import 'shared_pref.dart';
 import 'dart:collection';
 
 class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
-    Task(name: 'Buy le milk'),
-    Task(name: 'Buy le e g g'),
-    Task(name: 'Buy le m i l k'),
-  ];
+  SharedPref sharedPref = SharedPref();
+
+  loadSharedPreferences() async {
+    try {
+      Task task = Task.fromJson(await sharedPref.read('task'));
+      print(task.name);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  List<Task> _tasks = [];
 
   // Not a list view, but a view of a list
   UnmodifiableListView<Task> get tasks {
@@ -16,11 +24,13 @@ class TaskData extends ChangeNotifier {
   }
 
   void addTask(Task task) {
+    sharedPref.save('task', task);
+    loadSharedPreferences();
     _tasks.add(task);
     notifyListeners();
   }
-  void removeTask(Task task)
-  {
+
+  void removeTask(Task task) {
     _tasks.remove(task);
     notifyListeners();
   }
