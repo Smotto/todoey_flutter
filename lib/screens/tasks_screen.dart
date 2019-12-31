@@ -1,7 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
+import 'package:todoey_flutter/models/task.dart';
 import 'add_task_screen.dart';
+
+List<Task> tasks = [
+  Task(name: 'Buy le milk'),
+  Task(name: 'Buy le eggs'),
+  Task(name: 'Buy le bread'),
+];
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -38,7 +45,7 @@ class TasksScreen extends StatelessWidget {
                         fontSize: 50.0,
                         fontWeight: FontWeight.bold)),
                 Text(
-                  '6 Tasks',
+                  '? Tasks',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
